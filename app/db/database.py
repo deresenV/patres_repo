@@ -18,7 +18,7 @@ AsyncSessionLocal = sessionmaker(
 
 # Базовый класс для моделей
 Base = declarative_base()
-
+from app.db.models import Book, BorrowedBook, Reader
 # Генератор сессий
 async def get_db() -> AsyncGenerator[AsyncSession, None]:
     async with AsyncSessionLocal() as session:
