@@ -32,7 +32,7 @@ async def service_give_book(db: AsyncSession, book_id: int, reader_id: int):
     if existing_borrow:
         raise ValueError(f"Читатель уже взял эту книгу")
 
-    # Получаем количество взятых книг через запрос
+    # Получаем количество взятых книг
     query = select(BorrowedBook).where(
         BorrowedBook.reader_id == reader_id,
         BorrowedBook.return_date.is_(None)
@@ -42,7 +42,7 @@ async def service_give_book(db: AsyncSession, book_id: int, reader_id: int):
     borrowed_books_count = len(borrowed_books)
 
     if borrowed_books_count >= 3:
-        raise ValueError(f"У читателя уже взято {borrowed_books_count} книг. Максимальное количество: 3")
+        raise ValueError(f"У читателя уже взято {borrowed_books_count} книги. Максимальное количество: 3")
 
     # Уменьшаем количество доступных экземпляров
     book.copy_versions -= 1

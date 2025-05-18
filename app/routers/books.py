@@ -18,6 +18,8 @@ async def create_book_endpoint(
     db: AsyncSession = Depends(get_db),
     current_user: User = Depends(get_current_user)
 ):
+    '''Создание книги'''
+
     try:
         new_book = await create_book(db, book_data)
         return new_book
@@ -29,6 +31,7 @@ async def create_book_endpoint(
 async def get_all_books(
     db: AsyncSession = Depends(get_db)
 ):
+    '''Получить все книги'''
     try:
         books = await get_books(db)
         return books
@@ -41,6 +44,7 @@ async def get_book_endpoint(
     db: AsyncSession = Depends(get_db),
     current_user: User = Depends(get_current_user)
 ):
+    '''Получение книги'''
     try:
         book = await get_book(db, book_id)
         return book
@@ -54,6 +58,7 @@ async def update_book_endpoint(
     db: AsyncSession = Depends(get_db),
     current_user: User = Depends(get_current_user)
 ):
+    '''Обновление полей книги'''
     try:
         book = await update_book(db, book_id, book_data)
         return book
@@ -71,6 +76,7 @@ async def delete_book_endpoint(
     db: AsyncSession = Depends(get_db),
     current_user: User = Depends(get_current_user)
 ):
+    '''Удаление книги по id'''
     try:
         book = await delete_book(db, book_id)
         return book

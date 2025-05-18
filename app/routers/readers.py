@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.db.database import get_db
-from app.db.crud.readers import create_reader, get_reader, update_reader, delete_reader, get_readers
+from app.db.crud.readers import create_reader, get_reader, update_reader, delete_reader
 from app.db.schemas.reader import ReaderCreate, ReaderUpdate, Reader
 from app.methods.token import get_current_user
 from app.db.models.user import User

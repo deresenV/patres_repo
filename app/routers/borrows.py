@@ -43,8 +43,6 @@ async def return_book_endpoint(
         raise HTTPException(status_code=404, detail=str(e))
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
-    except:
-        raise HTTPException(status_code=400, detail="Ошибка")
 
 @router.get("/{reader_id}/books", response_model=list[BorrowedBookResponse])
 async def get_books_by_reader_endpoint(
