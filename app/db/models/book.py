@@ -13,11 +13,11 @@ class Book(Base):
     __tablename__ = "books"
 
     id = Column(Integer, primary_key=True, index=True)
-    title = Column(String, index=True)
-    author = Column(String, index=True)
-    year = Column(Integer)
-    isbn = Column(String, unique=True, index=True)
-    copy_versions = Column(Integer, default=1)
+    title = Column(String, nullable=False, index=True)
+    author = Column(String, nullable=False, index=True)
+    year = Column(Integer, nullable=True)
+    isbn = Column(String, unique=True, nullable=True, index=True)
+    copy_versions = Column(Integer, default=1, nullable=False)
     description = Column(String, nullable=True)
 
     #Смежная табличка для связи с читателями

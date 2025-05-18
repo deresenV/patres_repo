@@ -7,8 +7,8 @@ class Reader(Base):
     __tablename__ = "readers"
 
     id = Column(Integer, primary_key=True, index=True)
-    email = Column(String, unique=True, index=True)
-    name = Column(String, index=True)
+    email = Column(String, unique=True, index=True, nullable=False)
+    name = Column(String, index=True, nullable=False)
     #password - по тз не требуется
 
     # Смежная табличка для связи с книгами
