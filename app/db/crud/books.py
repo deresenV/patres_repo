@@ -24,7 +24,7 @@ async def get_book(db: AsyncSession, book_id: int) -> Book:
     result = await db.execute(query)
     book = result.scalar_one_or_none()
     if not book:
-        raise NoResultFound()
+        raise NoResultFound("Книга не найдена")
     return book
 
 
