@@ -1,14 +1,6 @@
 from sqlalchemy import select
-from sqlalchemy.ext.asyncio import AsyncSession
 from app.db.models.reader import Reader
-from app.db.schemas.reader import ReaderCreate, ReaderUpdate
 from sqlalchemy.exc import NoResultFound, IntegrityError
-
-
-async def get_readers(db: AsyncSession, skip: int = 0, limit: int = 100):
-    result = await db.execute(select(Reader).offset(skip).limit(limit))
-    return result.scalars().all()
-
 
 async def create_reader(db, reader_data):
     new_reader = Reader(
