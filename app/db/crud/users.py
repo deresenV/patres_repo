@@ -30,3 +30,14 @@ async def create_user(db: AsyncSession, email: str, password: str):
     await db.refresh(new_user)
 
     return new_user
+
+
+async def get_user(email: str, db: AsyncSession):
+    try:
+        # Формируем запрос для поиска пользователя
+        query = select(User).where(User.email == email)
+        result = await db.execute(query)
+        return result.scalars().first()
+
+    except Exception as e:
+        return None

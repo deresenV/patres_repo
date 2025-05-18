@@ -2,8 +2,8 @@ from pydantic import BaseModel
 from typing import Optional
 
 class ReaderBase(BaseModel):
-    name: str
     email: str
+    name: str
 
 class ReaderCreate(ReaderBase):
     pass
