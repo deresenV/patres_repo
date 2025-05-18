@@ -9,12 +9,13 @@ class BorrowedBookBase(BaseModel):
 class BorrowedBookCreate(BorrowedBookBase):
     pass
 
-class BorrowedBookReturn(BaseModel):
-    return_date: datetime
+class BorrowedBookReturn(BorrowedBookBase):
+    pass
 
 class BorrowedBookResponse(BorrowedBookBase):
     id: int
     borrow_date: datetime
     return_date: Optional[datetime] = None
+
     class Config:
         from_attributes = True 
